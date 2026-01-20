@@ -85,7 +85,8 @@ const StatsSection = () => {
 
         return () => clearInterval(timer);
       }
-    }, [isVisible, end, duration, started]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isVisible, started]);
 
     const formatValue = () => {
       if (end.includes('%')) return `${count}%`;
