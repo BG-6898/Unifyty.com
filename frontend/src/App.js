@@ -13,10 +13,12 @@ import CTASection from "./components/CTASection";
 import Footer from "./components/Footer";
 import SignInForm from "./components/SignInForm";
 import DemoModal from "./components/DemoModal";
+import RequestDemoForm from "./components/RequestDemoForm";
 
 const Home = () => {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   const [isDemoOpen, setIsDemoOpen] = useState(false);
+  const [isRequestDemoOpen, setIsRequestDemoOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-slate-950">
@@ -25,20 +27,27 @@ const Home = () => {
         onDemoClick={() => setIsDemoOpen(true)}
       />
       <main>
-        <HeroSection onDemoClick={() => setIsDemoOpen(true)} />
+        <HeroSection 
+          onWatchDemoClick={() => setIsDemoOpen(true)}
+          onRequestDemoClick={() => setIsRequestDemoOpen(true)}
+        />
         <StatsSection />
         <FeaturesSection />
         <ModulesSection />
         <IntegrationsSection />
         <PricingSection />
         <FAQSection />
-        <CTASection onDemoClick={() => setIsDemoOpen(true)} />
+        <CTASection 
+          onWatchDemoClick={() => setIsDemoOpen(true)}
+          onRequestDemoClick={() => setIsRequestDemoOpen(true)}
+        />
       </main>
       <Footer />
       
       {/* Global Modals */}
       <SignInForm isOpen={isSignInOpen} onClose={() => setIsSignInOpen(false)} />
       <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
+      <RequestDemoForm isOpen={isRequestDemoOpen} onClose={() => setIsRequestDemoOpen(false)} />
     </div>
   );
 };
