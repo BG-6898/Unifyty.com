@@ -5,434 +5,167 @@ const IntegrationsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   const integrations = [
-    // Vulnerability Management (VM) - 4 tools
-    { 
-      name: 'Tenable', 
-      category: 'VM', 
-      logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673',
-      description: 'Gold standard for vulnerability assessment with comprehensive asset coverage including cloud, OT, identity, and web app vulnerabilities'
-    },
-    { 
-      name: 'Qualys', 
-      category: 'VM', 
-      logo: 'https://cdn.brandfetch.io/idw382nG0m/w/400/h/400/theme/dark/icon.jpeg?t=1734545649666',
-      description: 'Cloud-based vulnerability management with continuous monitoring and compliance scanning across IT and OT assets'
-    },
-    { 
-      name: 'Rapid7', 
-      category: 'VM', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'InsightVM platform for vulnerability risk management with live monitoring and automated threat prioritization'
-    },
-    { 
-      name: 'Nessus Pro', 
-      category: 'VM', 
-      logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673',
-      description: 'Industry-leading vulnerability scanner for identifying security flaws, misconfigurations, and compliance issues'
-    },
-    
-    // SIEM Tools - 6 tools
-    { 
-      name: 'Splunk', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/idAnLJhrbv/w/400/h/400/theme/dark/icon.jpeg?t=1733863319695',
-      description: 'Enterprise Security platform with ML-based anomaly detection, UBA, and real-time analysis for massive data ingestion'
-    },
-    { 
-      name: 'Microsoft Sentinel', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'Cloud-native SIEM with AI-driven Fusion engine, UEBA, and Security Copilot for intelligent threat correlation'
-    },
-    { 
-      name: 'IBM QRadar', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691',
-      description: 'Modular SIEM with 700+ integrations, mature correlation rules, and AI-powered threat prioritization'
-    },
-    { 
-      name: 'Elastic Security', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/idw_bfBkXT/w/400/h/400/theme/dark/icon.jpeg?t=1734540955859',
-      description: 'Open-source SIEM on Elastic Stack with powerful search, full-stack visibility, and scalable log management'
-    },
-    { 
-      name: 'LogRhythm', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/idqj3Z_ELo/w/400/h/400/theme/dark/icon.jpeg?t=1734540865142',
-      description: 'NextGen SIEM with machine analytics, automated response workflows, and advanced threat detection'
-    },
-    { 
-      name: 'ArcSight', 
-      category: 'SIEM', 
-      logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691',
-      description: 'Enterprise SIEM by Micro Focus with correlation engine, compliance management, and threat intelligence'
-    },
-    
-    // EDR Tools - 4 tools
-    { 
-      name: 'CrowdStrike Falcon', 
-      category: 'EDR', 
-      logo: 'https://cdn.brandfetch.io/idAFvJPJDw/w/400/h/400/theme/dark/icon.jpeg?t=1733863310044',
-      description: 'Cloud-native EDR with next-gen antivirus, threat intelligence, and 70%+ fileless malware detection'
-    },
-    { 
-      name: 'SentinelOne', 
-      category: 'EDR', 
-      logo: 'https://cdn.brandfetch.io/idSUrLOkNR/w/400/h/400/theme/dark/icon.jpeg?t=1733863332651',
-      description: 'AI-driven EDR with autonomous response, behavioral detection, and comprehensive cross-platform coverage'
-    },
-    { 
-      name: 'Carbon Black', 
-      category: 'EDR', 
-      logo: 'https://cdn.brandfetch.io/idw_bfBkXT/w/400/h/400/theme/dark/icon.jpeg?t=1734540955859',
-      description: 'VMware endpoint security with incident response, threat hunting, and comprehensive endpoint recording'
-    },
-    { 
-      name: 'Microsoft Defender', 
-      category: 'EDR', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'Unified endpoint protection with Microsoft ecosystem integration, proactive hunting, and centralized management'
-    },
-    
-    // Cloud Security - 5 tools
-    { 
-      name: 'AWS Security Hub', 
-      category: 'Cloud', 
-      logo: 'https://cdn.brandfetch.io/idarqHjMDF/w/400/h/400/theme/dark/icon.jpeg?t=1733863314862',
-      description: 'Centralized security posture management for AWS with automated compliance checks and threat findings'
-    },
-    { 
-      name: 'Azure Defender', 
-      category: 'Cloud', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'Cloud workload protection with integrated threat detection across Azure, AWS, and GCP environments'
-    },
-    { 
-      name: 'Google Cloud SCC', 
-      category: 'Cloud', 
-      logo: 'https://cdn.brandfetch.io/idvfoh16-Y/w/400/h/400/theme/dark/icon.jpeg?t=1733863312054',
-      description: 'Security Command Center for vulnerability scanning, asset discovery, and compliance monitoring'
-    },
-    { 
-      name: 'Prisma Cloud', 
-      category: 'Cloud', 
-      logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506',
-      description: 'Palo Alto multi-cloud security platform with CSPM, CWP, and runtime protection'
-    },
-    { 
-      name: 'Wiz', 
-      category: 'Cloud', 
-      logo: 'https://cdn.brandfetch.io/id20mQeHt_/w/400/h/400/theme/dark/icon.jpeg?t=1734540969259',
-      description: 'Multi-cloud security for identifying critical risks across cloud infrastructure and workloads'
-    },
-    
-    // IAM Tools - 4 tools
-    { 
-      name: 'Okta', 
-      category: 'IAM', 
-      logo: 'https://cdn.brandfetch.io/idGbSoHq5i/w/400/h/400/theme/dark/icon.jpeg?t=1734540861871',
-      description: 'Cloud-native IAM with SSO, adaptive MFA, and 7,000+ app integrations for identity management'
-    },
-    { 
-      name: 'Azure AD / Entra ID', 
-      category: 'IAM', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'Microsoft identity platform with SSO, conditional access, and seamless Microsoft 365 integration'
-    },
-    { 
-      name: 'SailPoint', 
-      category: 'IAM', 
-      logo: 'https://cdn.brandfetch.io/id8OYw4O4u/w/400/h/400/theme/dark/icon.jpeg?t=1733863325738',
-      description: 'Enterprise identity governance with automated provisioning, access certifications, and compliance'
-    },
-    { 
-      name: 'OneLogin', 
-      category: 'IAM', 
-      logo: 'https://cdn.brandfetch.io/idcF7Yzt6Y/w/400/h/400/theme/dark/icon.jpeg?t=1734540866043',
-      description: 'Unified access management with SSO, MFA, and directory integration for hybrid environments'
-    },
-    
-    // PAM Tools - 3 tools
-    { 
-      name: 'CyberArk', 
-      category: 'PAM', 
-      logo: 'https://cdn.brandfetch.io/id-1v8w9Xr/w/400/h/400/theme/dark/icon.jpeg?t=1734540854916',
-      description: 'Digital Vault for privileged credential management with just-in-time access and session isolation'
-    },
-    { 
-      name: 'BeyondTrust', 
-      category: 'PAM', 
-      logo: 'https://cdn.brandfetch.io/id8_skqk1C/w/400/h/400/theme/dark/icon.jpeg?t=1734540849584',
-      description: 'Endpoint privilege management with session monitoring, remote support, and compliance reporting'
-    },
-    { 
-      name: 'Delinea Secret Server', 
-      category: 'PAM', 
-      logo: 'https://cdn.brandfetch.io/idHXc4FZuK/w/400/h/400/theme/dark/icon.jpeg?t=1734540856460',
-      description: 'Cloud-ready PAM with passwordless authentication, secrets management, and Zero Trust security'
-    },
-    
-    // Network Security - 4 tools
-    { 
-      name: 'Palo Alto Networks', 
-      category: 'Network', 
-      logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506',
-      description: 'ML-powered next-gen firewalls with Wildfire malware analysis and zero-day threat prevention'
-    },
-    { 
-      name: 'Fortinet', 
-      category: 'Network', 
-      logo: 'https://cdn.brandfetch.io/idGI7Ws-l6/w/400/h/400/theme/dark/icon.jpeg?t=1733863316555',
-      description: 'FortiGate firewalls with unified threat management, SD-WAN, and AI-based threat detection'
-    },
-    { 
-      name: 'Cisco', 
-      category: 'Network', 
-      logo: 'https://cdn.brandfetch.io/idw5bwKjAT/w/400/h/400/theme/dark/icon.jpeg?t=1734540852836',
-      description: 'Secure Firewall with Talos threat intelligence, ISE integration, and cloud-native security'
-    },
-    { 
-      name: 'Check Point', 
-      category: 'Network', 
-      logo: 'https://cdn.brandfetch.io/idwfLGw8ad/w/400/h/400/theme/dark/icon.jpeg?t=1734540951765',
-      description: 'Next-gen firewall with threat prevention, VPN, and unified security management'
-    },
-    
-    // ITSM / Ticketing - 3 tools
-    { 
-      name: 'ServiceNow', 
-      category: 'ITSM', 
-      logo: 'https://cdn.brandfetch.io/idH4mjRJHp/w/400/h/400/theme/dark/icon.jpeg?t=1733863328149',
-      description: 'Enterprise service management with incident response, workflow automation, and CMDB integration'
-    },
-    { 
-      name: 'Jira', 
-      category: 'ITSM', 
-      logo: 'https://cdn.brandfetch.io/idDdFwjvUe/w/400/h/400/theme/dark/icon.jpeg?t=1734540859768',
-      description: 'Agile project tracking with customizable workflows, issue management, and DevSecOps integration'
-    },
-    { 
-      name: 'Freshservice', 
-      category: 'ITSM', 
-      logo: 'https://cdn.brandfetch.io/idCy_n_F3g/w/400/h/400/theme/dark/icon.jpeg?t=1734540857722',
-      description: 'Cloud-native ITSM with AI-powered automation, asset management, and self-service portal'
-    },
+    // Vulnerability Management (VM) - 12 tools
+    { name: 'Qualys VMDR', category: 'VM', logo: 'https://cdn.brandfetch.io/idw382nG0m/w/400/h/400/theme/dark/icon.jpeg?t=1734545649666', description: 'Continuous vulnerability assessment with prioritization and patch management' },
+    { name: 'Tenable.io', category: 'VM', logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673', description: 'Cloud-based vulnerability management with comprehensive asset coverage' },
+    { name: 'Tenable.sc', category: 'VM', logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673', description: 'On-premises security and compliance management platform' },
+    { name: 'Rapid7 InsightVM', category: 'VM', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Live vulnerability management with automated threat prioritization' },
+    { name: 'Nexpose', category: 'VM', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Real-time vulnerability scanning with adaptive security' },
+    { name: 'OpenVAS', category: 'VM', logo: 'https://img.icons8.com/color/48/security-checked.png', description: 'Open-source vulnerability scanning and management framework' },
+    { name: 'Nessus', category: 'VM', logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673', description: 'Industry-standard vulnerability scanner for security assessment' },
+    { name: 'MS Defender VM', category: 'VM', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Microsoft vulnerability management integrated with Defender' },
+    { name: 'CrowdStrike Spotlight', category: 'VM', logo: 'https://cdn.brandfetch.io/idAFvJPJDw/w/400/h/400/theme/dark/icon.jpeg?t=1733863310044', description: 'Real-time vulnerability assessment within Falcon platform' },
+    { name: 'IBM QRadar VM', category: 'VM', logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691', description: 'Vulnerability manager integrated with QRadar SIEM' },
+    { name: 'Kenna Security', category: 'VM', logo: 'https://img.icons8.com/color/48/security-shield-green.png', description: 'Risk-based vulnerability management with data-driven prioritization' },
+    { name: 'Ivanti Neurons', category: 'VM', logo: 'https://img.icons8.com/color/48/neural-network.png', description: 'AI-powered vulnerability and patch management platform' },
 
-    // Threat Intelligence - 6 tools
-    { 
-      name: 'Recorded Future', 
-      category: 'ThreatIntel', 
-      logo: 'https://cdn.brandfetch.io/idh6kzDfCO/w/400/h/400/theme/dark/icon.jpeg?t=1734540867828',
-      description: 'Real-time threat intelligence with risk scoring, vulnerability prioritization, and dark web monitoring'
-    },
-    { 
-      name: 'ThreatConnect', 
-      category: 'ThreatIntel', 
-      logo: 'https://img.icons8.com/fluency/48/cyber-security.png',
-      description: 'Threat intelligence platform for orchestrating and operationalizing threat data across security tools'
-    },
-    { 
-      name: 'AlienVault OTX', 
-      category: 'ThreatIntel', 
-      logo: 'https://cdn.brandfetch.io/idw5bwKjAT/w/400/h/400/theme/dark/icon.jpeg?t=1734540852836',
-      description: 'Open threat exchange with community-powered threat intelligence and IOC sharing'
-    },
-    { 
-      name: 'Anomali', 
-      category: 'ThreatIntel', 
-      logo: 'https://img.icons8.com/color/48/artificial-intelligence.png',
-      description: 'Threat intelligence platform with machine learning for automated threat detection and response'
-    },
-    { 
-      name: 'MISP', 
-      category: 'ThreatIntel', 
-      logo: 'https://img.icons8.com/fluency/48/data-matrix-code.png',
-      description: 'Open-source threat intelligence platform for sharing, storing, and correlating IOCs'
-    },
-    { 
-      name: 'VirusTotal', 
-      category: 'ThreatIntel', 
-      logo: 'https://cdn.brandfetch.io/idvfoh16-Y/w/400/h/400/theme/dark/icon.jpeg?t=1733863312054',
-      description: 'File and URL analysis service with 70+ antivirus scanners and threat intelligence feeds'
-    },
+    // SOC / SIEM / Security Analytics - 7 tools
+    { name: 'Splunk Enterprise Security', category: 'SIEM', logo: 'https://cdn.brandfetch.io/idAnLJhrbv/w/400/h/400/theme/dark/icon.jpeg?t=1733863319695', description: 'Enterprise SIEM with ML-based analytics and threat intelligence' },
+    { name: 'IBM QRadar', category: 'SIEM', logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691', description: 'Modular SIEM with AI-powered security intelligence' },
+    { name: 'Microsoft Sentinel', category: 'SIEM', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Cloud-native SIEM with intelligent security analytics' },
+    { name: 'ArcSight ESM', category: 'SIEM', logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691', description: 'Enterprise security manager for real-time threat detection' },
+    { name: 'LogRhythm', category: 'SIEM', logo: 'https://cdn.brandfetch.io/idqj3Z_ELo/w/400/h/400/theme/dark/icon.jpeg?t=1734540865142', description: 'NextGen SIEM with machine analytics and SOAR capabilities' },
+    { name: 'Elastic SIEM', category: 'SIEM', logo: 'https://cdn.brandfetch.io/idw_bfBkXT/w/400/h/400/theme/dark/icon.jpeg?t=1734540955859', description: 'Open-source SIEM built on Elastic Stack' },
+    { name: 'Sumo Logic', category: 'SIEM', logo: 'https://cdn.brandfetch.io/idvC8pxKPU/w/400/h/400/theme/dark/icon.jpeg?t=1734540868745', description: 'Cloud-native security analytics and log management' },
 
-    // Application Security (AppSec) - 5 tools
-    { 
-      name: 'Checkmarx', 
-      category: 'AppSec', 
-      logo: 'https://cdn.brandfetch.io/id4pDlcv-8/w/400/h/400/theme/dark/icon.jpeg?t=1734540950925',
-      description: 'Static application security testing (SAST) with comprehensive language support and IDE integration'
-    },
-    { 
-      name: 'Snyk', 
-      category: 'AppSec', 
-      logo: 'https://cdn.brandfetch.io/id0mq2RrmV/w/400/h/400/theme/dark/icon.jpeg?t=1733863329851',
-      description: 'Developer-first security for finding and fixing vulnerabilities in code, dependencies, and containers'
-    },
-    { 
-      name: 'SonarQube', 
-      category: 'AppSec', 
-      logo: 'https://cdn.brandfetch.io/idTW-AZ-Xs/w/400/h/400/theme/dark/icon.jpeg?t=1734540868529',
-      description: 'Continuous code quality and security inspection with 27+ programming languages support'
-    },
-    { 
-      name: 'Veracode', 
-      category: 'AppSec', 
-      logo: 'https://cdn.brandfetch.io/idCZcrcH9w/w/400/h/400/theme/dark/icon.jpeg?t=1734540869304',
-      description: 'Application security testing platform with SAST, DAST, SCA, and manual penetration testing'
-    },
-    { 
-      name: 'WhiteSource', 
-      category: 'AppSec', 
-      logo: 'https://img.icons8.com/color/48/source-code.png',
-      description: 'Open source security and license compliance management with automated vulnerability detection'
-    },
+    // SOAR - 5 tools
+    { name: 'Cortex XSOAR', category: 'SOAR', logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506', description: 'Security orchestration with 400+ integrations and automation' },
+    { name: 'Splunk SOAR', category: 'SOAR', logo: 'https://cdn.brandfetch.io/idAnLJhrbv/w/400/h/400/theme/dark/icon.jpeg?t=1733863319695', description: 'Security automation with customizable playbooks' },
+    { name: 'IBM Resilient', category: 'SOAR', logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691', description: 'Incident response platform with orchestration capabilities' },
+    { name: 'Swimlane', category: 'SOAR', logo: 'https://img.icons8.com/fluency/48/workflow.png', description: 'Low-code security automation and orchestration platform' },
+    { name: 'Tines', category: 'SOAR', logo: 'https://img.icons8.com/color/48/automation.png', description: 'No-code automation platform for security workflows' },
 
-    // Data Security (DLP) - 3 tools
-    { 
-      name: 'Forcepoint DLP', 
-      category: 'DLP', 
-      logo: 'https://cdn.brandfetch.io/idtwanUjgE/w/400/h/400/theme/dark/icon.jpeg?t=1734540857165',
-      description: 'Data loss prevention with behavioral analytics, content inspection, and policy enforcement'
-    },
-    { 
-      name: 'Digital Guardian', 
-      category: 'DLP', 
-      logo: 'https://img.icons8.com/fluency/48/protect.png',
-      description: 'Data protection platform with visibility, classification, and automated response capabilities'
-    },
-    { 
-      name: 'Symantec DLP', 
-      category: 'DLP', 
-      logo: 'https://cdn.brandfetch.io/idl2CbgL0d/w/400/h/400/theme/dark/icon.jpeg?t=1734540868877',
-      description: 'Enterprise DLP for discovering, monitoring, and protecting sensitive data across all channels'
-    },
+    // EDR / XDR - 6 tools
+    { name: 'CrowdStrike Falcon', category: 'EDR', logo: 'https://cdn.brandfetch.io/idAFvJPJDw/w/400/h/400/theme/dark/icon.jpeg?t=1733863310044', description: 'Cloud-native EDR with AI-powered threat detection' },
+    { name: 'MS Defender for Endpoint', category: 'EDR', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Enterprise endpoint protection with behavioral detection' },
+    { name: 'SentinelOne', category: 'EDR', logo: 'https://cdn.brandfetch.io/idSUrLOkNR/w/400/h/400/theme/dark/icon.jpeg?t=1733863332651', description: 'Autonomous EDR with AI-driven threat prevention' },
+    { name: 'Cortex XDR', category: 'EDR', logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506', description: 'Extended detection and response across endpoints, network, cloud' },
+    { name: 'Trend Vision One', category: 'EDR', logo: 'https://cdn.brandfetch.io/idaW9FHrBI/w/400/h/400/theme/dark/icon.jpeg?t=1734540868991', description: 'Unified XDR platform with attack surface visibility' },
+    { name: 'Sophos Intercept X', category: 'EDR', logo: 'https://cdn.brandfetch.io/idJ5Itwgkj/w/400/h/400/theme/dark/icon.jpeg?t=1734540868517', description: 'Next-gen endpoint protection with deep learning' },
 
-    // Email Security - 4 tools
-    { 
-      name: 'Proofpoint', 
-      category: 'Email', 
-      logo: 'https://cdn.brandfetch.io/id2CwPp-yM/w/400/h/400/theme/dark/icon.jpeg?t=1734540866779',
-      description: 'Email security platform with threat protection, compliance, and business email compromise prevention'
-    },
-    { 
-      name: 'Mimecast', 
-      category: 'Email', 
-      logo: 'https://cdn.brandfetch.io/idSOcxMt4M/w/400/h/400/theme/dark/icon.jpeg?t=1734540865742',
-      description: 'Cloud email security with advanced threat protection, archiving, and continuity services'
-    },
-    { 
-      name: 'Barracuda', 
-      category: 'Email', 
-      logo: 'https://cdn.brandfetch.io/idlbRq86b0/w/400/h/400/theme/dark/icon.jpeg?t=1734540848801',
-      description: 'Email protection gateway with spam filtering, malware defense, and data leak prevention'
-    },
-    { 
-      name: 'Microsoft Defender for Office 365', 
-      category: 'Email', 
-      logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989',
-      description: 'Integrated email and collaboration security with safe attachments and anti-phishing protection'
-    },
+    // Cloud Security (CSPM / CNAPP) - 8 tools
+    { name: 'Prisma Cloud', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506', description: 'Comprehensive cloud native security platform (CNAPP)' },
+    { name: 'Wiz', category: 'Cloud', logo: 'https://cdn.brandfetch.io/id20mQeHt_/w/400/h/400/theme/dark/icon.jpeg?t=1734540969259', description: 'Cloud security platform for multi-cloud environments' },
+    { name: 'Orca Security', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idB7e2rPPT/w/400/h/400/theme/dark/icon.jpeg?t=1734540866272', description: 'Agentless cloud security with SideScanning technology' },
+    { name: 'Lacework', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idKPYYz8iP/w/400/h/400/theme/dark/icon.jpeg?t=1734540863726', description: 'Cloud security platform with behavioral analysis' },
+    { name: 'Azure Defender', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Cloud workload protection for Azure environments' },
+    { name: 'AWS Security Hub', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idarqHjMDF/w/400/h/400/theme/dark/icon.jpeg?t=1733863314862', description: 'Centralized security and compliance view for AWS' },
+    { name: 'AWS GuardDuty', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idarqHjMDF/w/400/h/400/theme/dark/icon.jpeg?t=1733863314862', description: 'Intelligent threat detection for AWS workloads' },
+    { name: 'GCP Security Command Center', category: 'Cloud', logo: 'https://cdn.brandfetch.io/idvfoh16-Y/w/400/h/400/theme/dark/icon.jpeg?t=1733863312054', description: 'Unified security management for Google Cloud' },
 
-    // Container Security - 3 tools
-    { 
-      name: 'Aqua Security', 
-      category: 'Container', 
-      logo: 'https://cdn.brandfetch.io/idA5f6QqQP/w/400/h/400/theme/dark/icon.jpeg?t=1734540847850',
-      description: 'Full lifecycle container security from build to runtime with image scanning and runtime protection'
-    },
-    { 
-      name: 'Twistlock', 
-      category: 'Container', 
-      logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506',
-      description: 'Palo Alto container security platform with vulnerability management and compliance enforcement'
-    },
-    { 
-      name: 'Sysdig Secure', 
-      category: 'Container', 
-      logo: 'https://cdn.brandfetch.io/idKI1vEv5U/w/400/h/400/theme/dark/icon.jpeg?t=1734540868961',
-      description: 'Cloud-native security with container threat detection, forensics, and compliance automation'
-    },
+    // Identity & Access Management (IAM) - 6 tools
+    { name: 'Okta', category: 'IAM', logo: 'https://cdn.brandfetch.io/idGbSoHq5i/w/400/h/400/theme/dark/icon.jpeg?t=1734540861871', description: 'Cloud-native identity and access management platform' },
+    { name: 'Azure AD / Entra ID', category: 'IAM', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Microsoft identity platform with SSO and MFA' },
+    { name: 'Ping Identity', category: 'IAM', logo: 'https://cdn.brandfetch.io/idHxILIzXO/w/400/h/400/theme/dark/icon.jpeg?t=1734540866574', description: 'Identity security platform for workforce and customers' },
+    { name: 'SailPoint', category: 'IAM', logo: 'https://cdn.brandfetch.io/id8OYw4O4u/w/400/h/400/theme/dark/icon.jpeg?t=1733863325738', description: 'Enterprise identity governance and administration' },
+    { name: 'ForgeRock', category: 'IAM', logo: 'https://cdn.brandfetch.io/idR7X_9vwq/w/400/h/400/theme/dark/icon.jpeg?t=1734540857356', description: 'Digital identity platform for consumer and workforce' },
+    { name: 'OneLogin', category: 'IAM', logo: 'https://cdn.brandfetch.io/idcF7Yzt6Y/w/400/h/400/theme/dark/icon.jpeg?t=1734540866043', description: 'Unified access management with SSO and MFA' },
 
-    // Web Application Firewall (WAF) - 3 tools
-    { 
-      name: 'Cloudflare WAF', 
-      category: 'WAF', 
-      logo: 'https://cdn.brandfetch.io/idD0xFCRhb/w/400/h/400/theme/dark/icon.jpeg?t=1733863310809',
-      description: 'Cloud-based WAF with DDoS protection, bot management, and OWASP Top 10 coverage'
-    },
-    { 
-      name: 'AWS WAF', 
-      category: 'WAF', 
-      logo: 'https://cdn.brandfetch.io/idarqHjMDF/w/400/h/400/theme/dark/icon.jpeg?t=1733863314862',
-      description: 'Managed web application firewall for protecting against common web exploits and bots'
-    },
-    { 
-      name: 'Imperva WAF', 
-      category: 'WAF', 
-      logo: 'https://cdn.brandfetch.io/idCZO1etvY/w/400/h/400/theme/dark/icon.jpeg?t=1734540859040',
-      description: 'Enterprise WAF with API security, bot mitigation, and advanced threat intelligence'
-    },
+    // Privileged Access Management (PAM) - 5 tools
+    { name: 'CyberArk', category: 'PAM', logo: 'https://cdn.brandfetch.io/id-1v8w9Xr/w/400/h/400/theme/dark/icon.jpeg?t=1734540854916', description: 'Privileged access security with digital vault' },
+    { name: 'BeyondTrust', category: 'PAM', logo: 'https://cdn.brandfetch.io/id8_skqk1C/w/400/h/400/theme/dark/icon.jpeg?t=1734540849584', description: 'Intelligent privilege management and remote access' },
+    { name: 'HashiCorp Vault', category: 'PAM', logo: 'https://cdn.brandfetch.io/idfq1z5bMz/w/400/h/400/theme/dark/icon.jpeg?t=1733863317996', description: 'Secrets management and data encryption platform' },
+    { name: 'Delinea Secret Server', category: 'PAM', logo: 'https://cdn.brandfetch.io/idHXc4FZuK/w/400/h/400/theme/dark/icon.jpeg?t=1734540856460', description: 'Privileged password and session management' },
+    { name: 'AWS Secrets Manager', category: 'PAM', logo: 'https://cdn.brandfetch.io/idarqHjMDF/w/400/h/400/theme/dark/icon.jpeg?t=1733863314862', description: 'Managed service for secrets rotation and retrieval' },
 
-    // Security Orchestration (SOAR) - 3 tools
-    { 
-      name: 'Palo Alto Cortex XSOAR', 
-      category: 'SOAR', 
-      logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506',
-      description: 'Security orchestration platform with 400+ integrations and automated incident response'
-    },
-    { 
-      name: 'Splunk SOAR', 
-      category: 'SOAR', 
-      logo: 'https://cdn.brandfetch.io/idAnLJhrbv/w/400/h/400/theme/dark/icon.jpeg?t=1733863319695',
-      description: 'Security automation and orchestration with customizable playbooks and case management'
-    },
-    { 
-      name: 'IBM Resilient', 
-      category: 'SOAR', 
-      logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691',
-      description: 'Incident response platform with orchestration, automation, and threat intelligence integration'
-    },
+    // Network Security - 8 tools
+    { name: 'Palo Alto Networks', category: 'Network', logo: 'https://cdn.brandfetch.io/idKq0n3RLf/w/400/h/400/theme/dark/icon.jpeg?t=1733863321506', description: 'Next-gen firewalls with threat prevention' },
+    { name: 'Fortinet', category: 'Network', logo: 'https://cdn.brandfetch.io/idGI7Ws-l6/w/400/h/400/theme/dark/icon.jpeg?t=1733863316555', description: 'FortiGate firewalls with unified threat management' },
+    { name: 'Check Point', category: 'Network', logo: 'https://cdn.brandfetch.io/idwfLGw8ad/w/400/h/400/theme/dark/icon.jpeg?t=1734540951765', description: 'Network security with threat prevention and VPN' },
+    { name: 'Cisco Security', category: 'Network', logo: 'https://cdn.brandfetch.io/idw5bwKjAT/w/400/h/400/theme/dark/icon.jpeg?t=1734540852836', description: 'Secure firewall with Talos threat intelligence' },
+    { name: 'F5', category: 'Network', logo: 'https://cdn.brandfetch.io/idmN6sr6h7/w/400/h/400/theme/dark/icon.jpeg?t=1734540856764', description: 'Application security and delivery solutions' },
+    { name: 'Zscaler', category: 'Network', logo: 'https://cdn.brandfetch.io/id_nwWfN7V/w/400/h/400/theme/dark/icon.jpeg?t=1734540869774', description: 'Cloud security platform with Zero Trust access' },
+    { name: 'Netskope', category: 'Network', logo: 'https://cdn.brandfetch.io/idq4w2I2pI/w/400/h/400/theme/dark/icon.jpeg?t=1734540865955', description: 'Cloud security with real-time data protection' },
+    { name: 'Juniper Networks', category: 'Network', logo: 'https://cdn.brandfetch.io/id87dh1Ovf/w/400/h/400/theme/dark/icon.jpeg?t=1734540860552', description: 'AI-driven enterprise networking and security' },
 
-    // Backup & Recovery - 3 tools
-    { 
-      name: 'Veeam', 
-      category: 'Backup', 
-      logo: 'https://cdn.brandfetch.io/idv-sLQs4R/w/400/h/400/theme/dark/icon.jpeg?t=1734540869368',
-      description: 'Backup and disaster recovery for virtual, physical, and cloud workloads with ransomware protection'
-    },
-    { 
-      name: 'Commvault', 
-      category: 'Backup', 
-      logo: 'https://cdn.brandfetch.io/id4q1MBcfz/w/400/h/400/theme/dark/icon.jpeg?t=1734540853553',
-      description: 'Data protection platform with backup, recovery, archiving, and compliance management'
-    },
-    { 
-      name: 'Rubrik', 
-      category: 'Backup', 
-      logo: 'https://cdn.brandfetch.io/iduuTk1Xzq/w/400/h/400/theme/dark/icon.jpeg?t=1734540867927',
-      description: 'Cloud data management with instant recovery, archival, and ransomware resilience'
-    },
+    // Application Security (AppSec) - 6 tools
+    { name: 'Checkmarx', category: 'AppSec', logo: 'https://cdn.brandfetch.io/id4pDlcv-8/w/400/h/400/theme/dark/icon.jpeg?t=1734540950925', description: 'Static application security testing (SAST)' },
+    { name: 'Fortify', category: 'AppSec', logo: 'https://cdn.brandfetch.io/idGI7Ws-l6/w/400/h/400/theme/dark/icon.jpeg?t=1733863316555', description: 'Application security testing and protection' },
+    { name: 'Veracode', category: 'AppSec', logo: 'https://cdn.brandfetch.io/idCZcrcH9w/w/400/h/400/theme/dark/icon.jpeg?t=1734540869304', description: 'Cloud-based application security platform' },
+    { name: 'SonarQube', category: 'AppSec', logo: 'https://cdn.brandfetch.io/idTW-AZ-Xs/w/400/h/400/theme/dark/icon.jpeg?t=1734540868529', description: 'Continuous code quality and security inspection' },
+    { name: 'Snyk', category: 'AppSec', logo: 'https://cdn.brandfetch.io/id0mq2RrmV/w/400/h/400/theme/dark/icon.jpeg?t=1733863329851', description: 'Developer-first security for code and dependencies' },
+    { name: 'GitHub Advanced Security', category: 'AppSec', logo: 'https://cdn.brandfetch.io/idSUrLOkNR/w/400/h/400/theme/dark/icon.jpeg?t=1733863332651', description: 'Code scanning and secret detection in GitHub' },
+
+    // GRC / Risk / Compliance - 7 tools
+    { name: 'RSA Archer', category: 'GRC', logo: 'https://img.icons8.com/color/48/risk.png', description: 'Integrated risk management and compliance platform' },
+    { name: 'ServiceNow GRC', category: 'GRC', logo: 'https://cdn.brandfetch.io/idH4mjRJHp/w/400/h/400/theme/dark/icon.jpeg?t=1733863328149', description: 'Governance, risk, and compliance management' },
+    { name: 'MetricStream', category: 'GRC', logo: 'https://img.icons8.com/fluency/48/administrative-tools.png', description: 'Connected GRC platform for risk and compliance' },
+    { name: 'LogicGate', category: 'GRC', logo: 'https://img.icons8.com/color/48/logic-gate.png', description: 'Risk cloud platform with no-code flexibility' },
+    { name: 'OneTrust', category: 'GRC', logo: 'https://cdn.brandfetch.io/idnYio0VDE/w/400/h/400/theme/dark/icon.jpeg?t=1734540866139', description: 'Privacy and data governance platform' },
+    { name: 'Diligent', category: 'GRC', logo: 'https://img.icons8.com/fluency/48/verified-account.png', description: 'Board governance and risk management solutions' },
+    { name: 'IBM OpenPages', category: 'GRC', logo: 'https://cdn.brandfetch.io/id4J58qxpY/w/400/h/400/theme/dark/icon.jpeg?t=1733863293691', description: 'AI-powered GRC platform for enterprise risk' },
+
+    // NOC / Infrastructure Monitoring - 11 tools
+    { name: 'SolarWinds', category: 'NOC', logo: 'https://cdn.brandfetch.io/idTJV-s0wX/w/400/h/400/theme/dark/icon.jpeg?t=1734540868481', description: 'Network performance monitoring and management' },
+    { name: 'Nagios', category: 'NOC', logo: 'https://img.icons8.com/color/48/monitor.png', description: 'Open-source IT infrastructure monitoring' },
+    { name: 'Zabbix', category: 'NOC', logo: 'https://img.icons8.com/color/48/server.png', description: 'Enterprise monitoring for networks and applications' },
+    { name: 'PRTG', category: 'NOC', logo: 'https://img.icons8.com/color/48/dashboard.png', description: 'Network monitoring with auto-discovery' },
+    { name: 'Datadog', category: 'NOC', logo: 'https://cdn.brandfetch.io/id7VSMjHDm/w/400/h/400/theme/dark/icon.jpeg?t=1733863311629', description: 'Cloud-scale monitoring and security platform' },
+    { name: 'Dynatrace', category: 'NOC', logo: 'https://cdn.brandfetch.io/idIFdVTOK7/w/400/h/400/theme/dark/icon.jpeg?t=1733863314128', description: 'AI-powered application performance monitoring' },
+    { name: 'Grafana', category: 'NOC', logo: 'https://cdn.brandfetch.io/idNpMiyU75/w/400/h/400/theme/dark/icon.jpeg?t=1733863317152', description: 'Open-source analytics and monitoring platform' },
+    { name: 'Prometheus', category: 'NOC', logo: 'https://img.icons8.com/color/48/prometheus-app.png', description: 'Time-series database for monitoring and alerting' },
+    { name: 'New Relic', category: 'NOC', logo: 'https://cdn.brandfetch.io/idyRfP5wUn/w/400/h/400/theme/dark/icon.jpeg?t=1733863320749', description: 'Full-stack observability platform' },
+    { name: 'PagerDuty', category: 'NOC', logo: 'https://cdn.brandfetch.io/idPu9n_zlE/w/400/h/400/theme/dark/icon.jpeg?t=1734540866485', description: 'Incident management and response platform' },
+    { name: 'ServiceNow ITSM', category: 'NOC', logo: 'https://cdn.brandfetch.io/idH4mjRJHp/w/400/h/400/theme/dark/icon.jpeg?t=1733863328149', description: 'IT service management and operations' },
+
+    // Email Security - 6 tools
+    { name: 'Proofpoint', category: 'Email', logo: 'https://cdn.brandfetch.io/id2CwPp-yM/w/400/h/400/theme/dark/icon.jpeg?t=1734540866779', description: 'Email security and threat protection platform' },
+    { name: 'Mimecast', category: 'Email', logo: 'https://cdn.brandfetch.io/idSOcxMt4M/w/400/h/400/theme/dark/icon.jpeg?t=1734540865742', description: 'Email security with archiving and continuity' },
+    { name: 'MS Defender for Office 365', category: 'Email', logo: 'https://cdn.brandfetch.io/idIq_kF0rb/w/400/h/400/theme/dark/icon.jpeg?t=1735742510989', description: 'Email and collaboration security protection' },
+    { name: 'Barracuda', category: 'Email', logo: 'https://cdn.brandfetch.io/idlbRq86b0/w/400/h/400/theme/dark/icon.jpeg?t=1734540848801', description: 'Email protection gateway with spam filtering' },
+    { name: 'Abnormal Security', category: 'Email', logo: 'https://img.icons8.com/fluency/48/artificial-intelligence.png', description: 'AI-native email security against advanced attacks' },
+    { name: 'Trend Micro Email Security', category: 'Email', logo: 'https://cdn.brandfetch.io/idaW9FHrBI/w/400/h/400/theme/dark/icon.jpeg?t=1734540868991', description: 'Advanced threat protection for email' },
+
+    // Data Security / DLP - 6 tools
+    { name: 'Symantec DLP', category: 'DLP', logo: 'https://cdn.brandfetch.io/idl2CbgL0d/w/400/h/400/theme/dark/icon.jpeg?t=1734540868877', description: 'Enterprise data loss prevention across all channels' },
+    { name: 'Forcepoint DLP', category: 'DLP', logo: 'https://cdn.brandfetch.io/idtwanUjgE/w/400/h/400/theme/dark/icon.jpeg?t=1734540857165', description: 'Data protection with behavioral analytics' },
+    { name: 'Digital Guardian', category: 'DLP', logo: 'https://img.icons8.com/fluency/48/protect.png', description: 'Data protection platform with visibility and classification' },
+    { name: 'BigID', category: 'DLP', logo: 'https://cdn.brandfetch.io/idO1aRTWFF/w/400/h/400/theme/dark/icon.jpeg?t=1734540849287', description: 'Data discovery and privacy intelligence platform' },
+    { name: 'Varonis', category: 'DLP', logo: 'https://cdn.brandfetch.io/idFxKNsFpe/w/400/h/400/theme/dark/icon.jpeg?t=1734540869184', description: 'Data security platform for unstructured data' },
+    { name: 'Imperva', category: 'DLP', logo: 'https://cdn.brandfetch.io/idCZO1etvY/w/400/h/400/theme/dark/icon.jpeg?t=1734540859040', description: 'Data security and compliance protection' },
+
+    // Threat Intelligence - 7 tools
+    { name: 'Recorded Future', category: 'ThreatIntel', logo: 'https://cdn.brandfetch.io/idh6kzDfCO/w/400/h/400/theme/dark/icon.jpeg?t=1734540867828', description: 'Real-time threat intelligence with risk scoring' },
+    { name: 'Mandiant', category: 'ThreatIntel', logo: 'https://cdn.brandfetch.io/idvfoh16-Y/w/400/h/400/theme/dark/icon.jpeg?t=1733863312054', description: 'Threat intelligence and incident response services' },
+    { name: 'Anomali', category: 'ThreatIntel', logo: 'https://img.icons8.com/color/48/artificial-intelligence.png', description: 'Threat intelligence platform with ML automation' },
+    { name: 'ThreatConnect', category: 'ThreatIntel', logo: 'https://img.icons8.com/fluency/48/cyber-security.png', description: 'Threat intelligence platform for orchestration' },
+    { name: 'CrowdStrike Intelligence', category: 'ThreatIntel', logo: 'https://cdn.brandfetch.io/idAFvJPJDw/w/400/h/400/theme/dark/icon.jpeg?t=1733863310044', description: 'Adversary-focused threat intelligence' },
+    { name: 'VirusTotal', category: 'ThreatIntel', logo: 'https://cdn.brandfetch.io/idvfoh16-Y/w/400/h/400/theme/dark/icon.jpeg?t=1733863312054', description: 'File and URL analysis with 70+ scanners' },
+    { name: 'MISP', category: 'ThreatIntel', logo: 'https://img.icons8.com/fluency/48/data-matrix-code.png', description: 'Open-source threat intelligence sharing platform' },
+
+    // Penetration Testing / Red Team - 8 tools
+    { name: 'Metasploit', category: 'PenTest', logo: 'https://img.icons8.com/color/48/hacking.png', description: 'Framework for penetration testing and exploit development' },
+    { name: 'Cobalt Strike', category: 'PenTest', logo: 'https://img.icons8.com/color/48/strike.png', description: 'Threat emulation and adversary simulation platform' },
+    { name: 'Nmap', category: 'PenTest', logo: 'https://img.icons8.com/color/48/network-card.png', description: 'Network scanning and host discovery tool' },
+    { name: 'Burp Suite', category: 'PenTest', logo: 'https://img.icons8.com/fluency/48/web-design.png', description: 'Web application security testing toolkit' },
+    { name: 'Nessus (Pentest)', category: 'PenTest', logo: 'https://cdn.brandfetch.io/idVfYOVSeE/w/400/h/400/theme/dark/icon.jpeg?t=1735742515673', description: 'Vulnerability scanner for penetration testing' },
+    { name: 'OWASP ZAP', category: 'PenTest', logo: 'https://img.icons8.com/color/48/web-shield.png', description: 'Open-source web application security scanner' },
+    { name: 'Acunetix', category: 'PenTest', logo: 'https://img.icons8.com/fluency/48/radar.png', description: 'Web vulnerability scanner with crawling' },
+    { name: 'Core Impact', category: 'PenTest', logo: 'https://img.icons8.com/color/48/explosion.png', description: 'Commercial penetration testing platform' },
+
+    // Ticketing & Workflow - 2 tools
+    { name: 'Jira', category: 'Ticketing', logo: 'https://cdn.brandfetch.io/idDdFwjvUe/w/400/h/400/theme/dark/icon.jpeg?t=1734540859768', description: 'Issue tracking and agile project management' },
+    { name: 'ServiceNow', category: 'Ticketing', logo: 'https://cdn.brandfetch.io/idH4mjRJHp/w/400/h/400/theme/dark/icon.jpeg?t=1733863328149', description: 'IT service management and workflow automation' },
   ];
+
   const categories = [
-    { name: 'All', count: '67' },
-    { name: 'VM', count: '4' },
-    { name: 'SIEM', count: '6' },
-    { name: 'EDR', count: '4' },
-    { name: 'Cloud', count: '5' },
-    { name: 'IAM', count: '4' },
-    { name: 'PAM', count: '3' },
-    { name: 'Network', count: '4' },
-    { name: 'ITSM', count: '3' },
-    { name: 'ThreatIntel', count: '6' },
-    { name: 'AppSec', count: '5' },
-    { name: 'DLP', count: '3' },
-    { name: 'Email', count: '4' },
-    { name: 'Container', count: '3' },
-    { name: 'WAF', count: '3' },
-    { name: 'SOAR', count: '3' },
-    { name: 'Backup', count: '3' },
+    { name: 'All', count: '110' },
+    { name: 'VM', count: '12' },
+    { name: 'SIEM', count: '7' },
+    { name: 'SOAR', count: '5' },
+    { name: 'EDR', count: '6' },
+    { name: 'Cloud', count: '8' },
+    { name: 'IAM', count: '6' },
+    { name: 'PAM', count: '5' },
+    { name: 'Network', count: '8' },
+    { name: 'AppSec', count: '6' },
+    { name: 'GRC', count: '7' },
+    { name: 'NOC', count: '11' },
+    { name: 'Email', count: '6' },
+    { name: 'DLP', count: '6' },
+    { name: 'ThreatIntel', count: '7' },
+    { name: 'PenTest', count: '8' },
+    { name: 'Ticketing', count: '2' },
   ];
 
   const filteredIntegrations = selectedCategory === 'All' 
@@ -448,13 +181,13 @@ const IntegrationsSection = () => {
             <span className="text-cyan-400 font-semibold text-sm tracking-wider uppercase">Integrations</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            104 Integrations.
+            110 Tool Integrations.
             <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mt-2">
               One Interface.
             </span>
           </h2>
           <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-            Connect your entire security stack. We don't replace your tools—we make them work together.
+            Connect your entire security stack across 16 domains. We don't replace your tools—we make them work together.
           </p>
         </div>
 
@@ -484,7 +217,7 @@ const IntegrationsSection = () => {
             <div
               key={`${integration.name}-${index}`}
               className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:bg-slate-800 hover:border-cyan-500/30 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer animate-fade-in"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              style={{ animationDelay: `${(index % 20) * 0.05}s` }}
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 rounded-xl transition-all duration-300"></div>
@@ -522,7 +255,7 @@ const IntegrationsSection = () => {
         <div className="text-center">
           <div className="inline-flex flex-col items-center space-y-4 p-8 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 backdrop-blur-sm">
             <p className="text-lg text-slate-300">
-              Showing <span className="text-cyan-400 font-bold">{filteredIntegrations.length}</span> of <span className="text-cyan-400 font-bold">104</span> enterprise integrations across 15 security categories.
+              Showing <span className="text-cyan-400 font-bold">{filteredIntegrations.length}</span> of <span className="text-cyan-400 font-bold">110</span> enterprise integrations across 16 security domains.
             </p>
             <button className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors duration-300 underline underline-offset-4">
               View All Integrations →
