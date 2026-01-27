@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIFYTY - Unified Cybersecurity Operations Platform</title>
+    <meta name="description" content="Stop juggling 40+ security tools. UNIFYTY brings your entire security stack into one intelligent platform.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+        
+        /* Animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 0.8s ease-out;
+        }
+        
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out;
+        }
+        
+        .animate-pulse-glow {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        /* Background gradient */
+        .bg-gradient-radial {
+            background: radial-gradient(circle at center, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+        }
+        
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Modal backdrop */
+        .modal-backdrop {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <img src="https://customer-assets.emergentagent.com/job_unifyty-security-hq/artifacts/l8zeswds_Screenshot_2026-01-06_at_7.35.59_PM_1767774363546.png" 
+                         alt="UNIFYTY Logo" class="h-12 w-12 transition-transform duration-300 group-hover:scale-110">
+                    <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                        UNIFYTY
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300 text-sm font-medium">Features</a>
+                    <a href="#modules" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300 text-sm font-medium">Modules</a>
+                    <a href="#integrations" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300 text-sm font-medium">Integrations</a>
+                    <a href="#pricing" class="text-slate-300 hover:text-cyan-400 transition-colors duration-300 text-sm font-medium">Pricing</a>
+                </nav>
+
+                <!-- CTA Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="openSignInModal()" class="px-4 py-2 text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50 rounded-lg transition-all">
+                        Sign In
+                    </button>
+                    <button onclick="openDemoModal()" class="px-6 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white rounded-lg shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105">
+                        Watch Demo
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-slate-900/98 backdrop-blur-xl border-t border-slate-800/50">
+            <nav class="px-4 py-6 space-y-4">
+                <a href="#features" class="block text-slate-300 hover:text-cyan-400 transition-colors py-2">Features</a>
+                <a href="#modules" class="block text-slate-300 hover:text-cyan-400 transition-colors py-2">Modules</a>
+                <a href="#integrations" class="block text-slate-300 hover:text-cyan-400 transition-colors py-2">Integrations</a>
+                <a href="#pricing" class="block text-slate-300 hover:text-cyan-400 transition-colors py-2">Pricing</a>
+                <div class="pt-4 space-y-3">
+                    <button onclick="openSignInModal()" class="w-full px-4 py-2 border border-slate-700 text-slate-300 rounded-lg">Sign In</button>
+                    <button onclick="openDemoModal()" class="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg">Watch Demo</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/30 rounded-full blur-3xl animate-pulse-glow"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/30 rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 1s"></div>
+                <div class="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse-glow" style="animation-delay: 2s"></div>
+            </div>
+            <!-- Grid Pattern -->
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(6,182,212,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center space-y-8">
+                <!-- Tagline Badge -->
+                <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 rounded-full px-6 py-2 backdrop-blur-sm animate-fade-in">
+                    <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                    </svg>
+                    <span class="text-sm text-cyan-300 font-medium">Unified Cybersecurity Operations Platform</span>
+                </div>
+
+                <!-- Main Headline -->
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight animate-fade-in-up">
+                    <span class="block text-white mb-2">Stop Juggling 40+</span>
+                    <span class="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                        Security Tools.
+                    </span>
+                </h1>
+
+                <!-- Sub-headline -->
+                <p class="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s">
+                    UNIFYTY brings your entire security stack into one intelligent platform—so your team can focus on what matters: <span class="text-cyan-400 font-semibold">protecting your business</span>.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.4s">
+                    <button onclick="openDemoModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-4 rounded-lg shadow-2xl shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105">
+                        Watch Demo
+                        <span class="ml-2">→</span>
+                    </button>
+                    <button onclick="openRequestDemoModal()" class="border-2 border-slate-700 hover:border-cyan-500 text-white text-lg px-8 py-4 bg-slate-800/50 hover:bg-slate-800 backdrop-blur-sm rounded-lg transition-all duration-300">
+                        Request Demo
+                        <svg class="inline-block ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="pt-12 animate-fade-in-up" style="animation-delay: 0.6s">
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                        <div class="flex flex-col items-center space-y-2 p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span class="text-xs text-slate-300 text-center font-medium">SOC2 Type II Certified</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span class="text-xs text-slate-300 text-center font-medium">ISO 27001:2022</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span class="text-xs text-slate-300 text-center font-medium">9.9/10 Security Rating</span>
+                        </div>
+                        <div class="flex flex-col items-center space-y-2 p-4 rounded-xl bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/50 hover:border-cyan-500/30 transition-all duration-300">
+                            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                            <span class="text-xs text-slate-300 text-center font-medium">Bank-Ready Architecture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="pt-8 text-slate-400 text-sm animate-fade-in-up" style="animation-delay: 0.8s">
+                    Trusted by enterprise security teams worldwide • 110 integrations • SOC2 & ISO27001 certified
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="relative py-20 bg-gradient-to-b from-slate-950 to-slate-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                    The Numbers Speak for
+                    <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"> Themselves</span>
+                </h2>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">
+                    See why enterprise security teams trust UNIFYTY to transform their operations
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Stat 1 -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 bg-opacity-10">
+                                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">10,000+</div>
+                                <p class="text-slate-300 font-medium">Daily Security Alerts Unified</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-blue-400 to-purple-500 bg-opacity-10">
+                                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent mb-2">95%</div>
+                                <p class="text-slate-300 font-medium">Reduction in Alert Fatigue</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-purple-400 to-pink-500 bg-opacity-10">
+                                <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent mb-2">10x</div>
+                                <p class="text-slate-300 font-medium">Faster Threat Detection</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-teal-500 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 rounded-2xl"></div>
+                    <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-slate-600 transition-all duration-300 hover:transform hover:scale-105">
+                        <div class="flex flex-col items-center text-center space-y-4">
+                            <div class="p-4 rounded-xl bg-gradient-to-r from-cyan-400 to-teal-500 bg-opacity-10">
+                                <svg class="w-8 h-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-5xl font-bold bg-gradient-to-r from-cyan-400 to-teal-500 bg-clip-text text-transparent mb-2">80%</div>
+                                <p class="text-slate-300 font-medium">Reduction in MTTR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative py-24 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
+        <!-- Background Effects -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 backdrop-blur-xl border border-cyan-500/20 rounded-3xl p-12 md:p-16 text-center">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                    Ready to Transform Your
+                    <span class="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mt-2">
+                        Security Operations?
+                    </span>
+                </h2>
+                <p class="text-xl text-slate-300 mb-10 max-w-3xl mx-auto">
+                    Join enterprise security teams who trust UNIFYTY to detect threats 10x faster and reduce alert fatigue by 95%.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button onclick="openDemoModal()" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-10 py-4 rounded-lg shadow-2xl shadow-cyan-500/30 transition-all duration-300 hover:shadow-cyan-500/50 hover:scale-105">
+                        Watch Demo
+                        <span class="ml-2">→</span>
+                    </button>
+                    <button onclick="openRequestDemoModal()" class="border-2 border-slate-600 hover:border-cyan-500 text-white text-lg px-10 py-4 bg-slate-800/50 hover:bg-slate-800 backdrop-blur-sm rounded-lg transition-all duration-300">
+                        Request Demo
+                    </button>
+                </div>
+                <p class="mt-8 text-sm text-slate-400">
+                    Contact us for a personalized demonstration • Full platform tour • See UNIFYTY in action
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative bg-slate-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
+                <!-- Brand Column -->
+                <div class="lg:col-span-2">
+                    <a href="#" class="flex items-center space-x-3 mb-6">
+                        <img src="https://customer-assets.emergentagent.com/job_unifyty-security-hq/artifacts/l8zeswds_Screenshot_2026-01-06_at_7.35.59_PM_1767774363546.png" 
+                             alt="UNIFYTY Logo" class="h-10 w-10">
+                        <span class="text-2xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                            UNIFYTY
+                        </span>
+                    </a>
+                    <p class="text-slate-400 mb-6 leading-relaxed">
+                        The unified cybersecurity operations platform. Consolidating 110 security tools into one intelligent interface.
+                    </p>
+                    
+                    <!-- Contact Info -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start space-x-3 text-slate-400">
+                            <svg class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span class="text-sm">
+                                123 Security Boulevard, Suite 100<br>
+                                San Francisco, CA 94105
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-slate-400">
+                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span class="text-sm">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-slate-400">
+                            <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <a href="mailto:sales@unifyty.io" class="text-sm hover:text-cyan-400 transition-colors">
+                                sales@unifyty.io
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="flex space-x-4">
+                        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" class="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="mailto:sales@unifyty.io" class="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Product</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#features" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Features</a></li>
+                        <li><a href="#modules" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Modules</a></li>
+                        <li><a href="#integrations" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Integrations</a></li>
+                        <li><a href="#pricing" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Solutions</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">For SOC Teams</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">For GRC Teams</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Financial Services</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Healthcare</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Documentation</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">API Reference</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Blog</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Case Studies</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Careers</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Press</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-cyan-400 transition-colors text-sm">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Certifications Bar -->
+            <div class="border-t border-slate-800 pt-8 pb-8">
+                <div class="flex flex-wrap items-center justify-center gap-8">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span class="text-slate-400 text-sm">SOC2 Type II Certified</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span class="text-slate-400 text-sm">ISO 27001:2022 Compliant</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                        <span class="text-slate-400 text-sm">9.9/10 Security Rating</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="pt-8 border-t border-slate-800">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Terms of Service</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Security Policy</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">Cookie Policy</a>
+                        <a href="#" class="hover:text-cyan-400 transition-colors">GDPR Compliance</a>
+                    </div>
+                    <div class="text-sm text-slate-400">
+                        © 2026 UNIFYTY. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 modal-backdrop">
+        <div class="w-full max-w-md mx-4 bg-slate-900/95 border border-slate-700 rounded-2xl shadow-2xl">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Get in Touch</h2>
+                        <p class="text-slate-400 text-sm">Our team will get back to you within 24 hours.</p>
+                    </div>
+                    <button onclick="closeSignInModal()" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
+                        <input type="text" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="John Doe">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Work Email *</label>
+                        <input type="email" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="john@company.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Company *</label>
+                        <input type="text" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Acme Corp">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Message (Optional)</label>
+                        <textarea rows="3" class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none" placeholder="Tell us about your security needs..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 rounded-lg shadow-lg transition-all">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 modal-backdrop">
+        <div class="w-full max-w-4xl mx-4 bg-slate-900/95 border border-slate-700 rounded-2xl shadow-2xl">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-3xl font-bold text-white mb-2">Watch UNIFYTY Demo</h2>
+                        <p class="text-slate-400">See how UNIFYTY transforms security operations in minutes.</p>
+                    </div>
+                    <button onclick="closeDemoModal()" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="relative aspect-video bg-slate-800 rounded-xl overflow-hidden border border-slate-700">
+                    <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="w-20 h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center mb-4 cursor-pointer hover:scale-110 transition-transform shadow-lg shadow-cyan-500/50">
+                            <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"></path>
+                            </svg>
+                        </div>
+                        <p class="text-slate-400 text-lg">Demo video coming soon</p>
+                        <p class="text-slate-500 text-sm mt-2">Contact us for a personalized live demo</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <div class="text-cyan-400 font-bold text-lg mb-1">95%</div>
+                        <div class="text-slate-300 text-sm">Less Alert Noise</div>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <div class="text-blue-400 font-bold text-lg mb-1">10x</div>
+                        <div class="text-slate-300 text-sm">Faster Detection</div>
+                    </div>
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-lg p-4">
+                        <div class="text-purple-400 font-bold text-lg mb-1">110</div>
+                        <div class="text-slate-300 text-sm">Integrations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Demo Modal -->
+    <div id="requestDemoModal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/80 modal-backdrop overflow-y-auto">
+        <div class="w-full max-w-2xl mx-4 my-8 bg-slate-900/95 border border-slate-700 rounded-2xl shadow-2xl">
+            <div class="p-8">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white mb-2">Request a Demo</h2>
+                        <p class="text-slate-400 text-sm">Our team will reach out to schedule a personalized demo.</p>
+                    </div>
+                    <button onclick="closeRequestDemoModal()" class="text-slate-400 hover:text-white transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Full Name *</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Jane Smith">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Work Email *</label>
+                            <input type="email" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="jane@company.com">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Company *</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Enterprise Corp">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Job Title *</label>
+                            <input type="text" required class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="Security Director">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500" placeholder="+1 (555) 123-4567">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-2">Team Size</label>
+                            <select class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                                <option value="">Select team size</option>
+                                <option value="1-10">1-10 users</option>
+                                <option value="11-50">11-50 users</option>
+                                <option value="51-200">51-200 users</option>
+                                <option value="200+">200+ users</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-2">Additional Information (Optional)</label>
+                        <textarea rows="3" class="w-full px-4 py-3 bg-slate-800/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-none" placeholder="Tell us about your specific security needs..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 rounded-lg shadow-lg transition-all">
+                        Request Demo
+                    </button>
+                    <p class="text-xs text-slate-500 text-center">
+                        By requesting a demo, you agree to our <a href="#" class="text-cyan-400 hover:text-cyan-300 underline">Privacy Policy</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 20) {
+                header.classList.add('bg-slate-900/95', 'backdrop-blur-xl', 'shadow-lg', 'border-b', 'border-slate-800/50');
+            } else {
+                header.classList.remove('bg-slate-900/95', 'backdrop-blur-xl', 'shadow-lg', 'border-b', 'border-slate-800/50');
+            }
+        });
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal functions
+        function openSignInModal() {
+            document.getElementById('signInModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSignInModal() {
+            document.getElementById('signInModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openDemoModal() {
+            document.getElementById('demoModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDemoModal() {
+            document.getElementById('demoModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openRequestDemoModal() {
+            document.getElementById('requestDemoModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRequestDemoModal() {
+            document.getElementById('requestDemoModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-backdrop').forEach(modal => {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
