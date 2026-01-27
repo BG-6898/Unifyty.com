@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
 
-const CTASection = ({ onDemoClick }) => {
+const CTASection = ({ onWatchDemoClick, onRequestDemoClick }) => {
   return (
     <section className="relative py-24 bg-gradient-to-b from-slate-900 to-slate-950 overflow-hidden">
       {/* Background Effects */}
@@ -25,7 +25,7 @@ const CTASection = ({ onDemoClick }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-10 py-6 shadow-2xl shadow-cyan-500/30 transition-all duration-300 hover:shadow-cyan-500/50 hover:scale-105 group"
-              onClick={onDemoClick}
+              onClick={onWatchDemoClick}
             >
               Watch Demo
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -33,7 +33,7 @@ const CTASection = ({ onDemoClick }) => {
             <Button
               variant="outline"
               className="border-2 border-slate-600 hover:border-cyan-500 text-white text-lg px-10 py-6 bg-slate-800/50 hover:bg-slate-800 backdrop-blur-sm transition-all duration-300"
-              onClick={onDemoClick}
+              onClick={onRequestDemoClick}
             >
               Request Demo
             </Button>
