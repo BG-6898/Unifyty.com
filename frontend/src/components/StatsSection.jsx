@@ -51,7 +51,7 @@ const StatsSection = () => {
     },
     {
       icon: Shield,
-      value: '110+',
+      value: '104',
       label: 'Tool Integrations',
       color: 'from-cyan-400 to-teal-500',
       delay: '0.6s',
