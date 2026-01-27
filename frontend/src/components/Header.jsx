@@ -104,7 +104,7 @@ const Header = ({ onSignInClick, onDemoClick }) => {
                 variant="outline"
                 className="w-full border-slate-700 text-slate-300 hover:bg-slate-800/50"
                 onClick={() => {
-                  setIsSignInOpen(true);
+                  onSignInClick();
                   setIsMobileMenuOpen(false);
                 }}
               >
@@ -113,7 +113,7 @@ const Header = ({ onSignInClick, onDemoClick }) => {
               <Button 
                 className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
                 onClick={() => {
-                  setIsDemoOpen(true);
+                  onDemoClick();
                   setIsMobileMenuOpen(false);
                 }}
               >
@@ -123,10 +123,6 @@ const Header = ({ onSignInClick, onDemoClick }) => {
           </nav>
         </div>
       )}
-
-      {/* Modals */}
-      <SignInForm isOpen={isSignInOpen} onClose={() => setIsSignInOpen(false)} />
-      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </header>
   );
 };
