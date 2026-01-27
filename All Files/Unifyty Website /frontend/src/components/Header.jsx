@@ -127,6 +127,10 @@ const Header = () => {
           </nav>
         </div>
       )}
+
+      {/* Modals */}
+      <SignInForm isOpen={isSignInOpen} onClose={() => setIsSignInOpen(false)} />
+      <DemoModal isOpen={isDemoOpen} onClose={() => setIsDemoOpen(false)} />
     </header>
   );
 };
