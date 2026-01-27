@@ -125,6 +125,46 @@ const ModulesSection = () => {
       color: 'violet',
       gradient: 'from-violet-500 to-purple-600',
     },
+    {
+      id: 'noc',
+      icon: Network,
+      name: 'Network Operations Center',
+      tagline: 'Network visibility meets security intelligence',
+      description:
+        'Bridge the gap between NetOps and SecOps. Monitor network health, analyze traffic patterns, and correlate network events with security incidents for faster root cause analysis.',
+      detailedDescription:
+        'UNIFYTY NOC transforms network monitoring into security intelligence. Our platform aggregates telemetry from network devices, correlates performance issues with security events, and provides unified visibility across your infrastructure. Traffic analysis identifies anomalies that could indicate attacks, while topology visualization helps teams understand attack paths. Integration with security tools enables rapid correlation between network outages and cyber incidents, dramatically reducing MTTR for complex issues.',
+      capabilities: [
+        'Network device monitoring & health tracking',
+        'Traffic analysis & anomaly detection',
+        'Uptime & performance monitoring',
+        'Security event correlation with network data',
+        'Interactive topology visualization',
+        'Bandwidth utilization alerts & reporting',
+      ],
+      color: 'emerald',
+      gradient: 'from-emerald-500 to-teal-600',
+    },
+    {
+      id: 'appsec',
+      icon: Code,
+      name: 'Application Security',
+      tagline: 'Shift security left without slowing down',
+      description:
+        'Aggregate SAST, DAST, and SCA findings from across your development pipeline. Prioritize vulnerabilities by exploitability, track remediation, and empower developers with actionable guidance.',
+      detailedDescription:
+        'UNIFYTY AppSec unifies application security across the development lifecycle. Aggregate findings from Checkmarx, Snyk, SonarQube, and other tools into a single vulnerability database. Our platform deduplicates findings, assesses exploitability based on runtime context, and provides developers with remediation guidance in their preferred tools. SBOM management tracks all dependencies, while CI/CD integration enables automated security gates. Developer-friendly interfaces and secure code training help shift security left without creating bottlenecks.',
+      capabilities: [
+        'Multi-scanner aggregation (SAST, DAST, SCA)',
+        'SBOM management & dependency tracking',
+        'Developer-friendly remediation guidance',
+        'CI/CD integration with security gates',
+        'Secure code training & best practices',
+        'Vulnerability prioritization by exploitability',
+      ],
+      color: 'amber',
+      gradient: 'from-amber-500 to-orange-600',
+    },
   ];
 
   const [selectedModule, setSelectedModule] = useState(modules[0]);
