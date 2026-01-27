@@ -33,15 +33,15 @@ const HeroSection = ({ onWatchDemoClick, onRequestDemoClick }) => {
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight animate-fade-in-up">
-            <span className="block text-white mb-2">One Platform.</span>
+            <span className="block text-white mb-2">Stop Juggling 40+</span>
             <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-              Complete Security.
+              Security Tools.
             </span>
           </h1>
 
           {/* Sub-headline */}
           <p className="text-xl md:text-2xl text-slate-400 max-w-4xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Stop juggling 40+ security tools. UNIFYTY brings your entire security stack into one intelligent platform—so your team can focus on what matters: <span className="text-cyan-400 font-semibold">protecting your business</span>.
+            UNIFYTY brings your entire security stack into one intelligent platform—so your team can focus on what matters: <span className="text-cyan-400 font-semibold">protecting your business</span>.
           </p>
 
           {/* CTA Buttons */}
