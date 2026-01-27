@@ -213,6 +213,12 @@ const ModulesSection = () => {
                     </div>
                   </div>
                   <p className="text-slate-300 text-lg leading-relaxed">{selectedModule.description}</p>
+                  
+                  {/* Detailed Description */}
+                  <div className="bg-slate-900/50 border border-slate-700/50 rounded-xl p-6">
+                    <h4 className="text-cyan-400 font-bold text-sm uppercase tracking-wider mb-3">How It Works</h4>
+                    <p className="text-slate-400 text-sm leading-relaxed">{selectedModule.detailedDescription}</p>
+                  </div>
                 </div>
 
                 {/* Right Column - Capabilities */}
