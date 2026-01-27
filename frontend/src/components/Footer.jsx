@@ -1,46 +1,46 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
+import { Shield, Linkedin, Twitter, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   const footerLinks = [
     {
       title: 'Product',
       links: [
-        { name: 'Features', href: '#features' },
-        { name: 'Integrations', href: '#integrations' },
-        { name: 'Security', href: '#' },
-        { name: 'Pricing', href: '#pricing' },
-        { name: 'Changelog', href: '#' },
+        { name: 'Features', href: '#features', desc: 'Unified visibility & intelligent correlation' },
+        { name: 'Modules', href: '#modules', desc: 'VM, SOC, EDR, GRC, IAM, PAM' },
+        { name: 'Integrations', href: '#integrations', desc: '110+ security tool integrations' },
+        { name: 'Security', href: '#', desc: 'SOC2 Type II & ISO 27001 certified' },
+        { name: 'Pricing', href: '#pricing', desc: 'Simple, transparent pricing' },
       ],
     },
     {
       title: 'Solutions',
       links: [
-        { name: 'By Industry', href: '#' },
-        { name: 'By Use Case', href: '#' },
-        { name: 'For SOC Teams', href: '#' },
-        { name: 'For GRC Teams', href: '#' },
-        { name: 'For Executives', href: '#' },
+        { name: 'Financial Services', href: '#', desc: 'Bank-grade security operations' },
+        { name: 'Healthcare', href: '#', desc: 'HIPAA-ready compliance & protection' },
+        { name: 'Retail & E-commerce', href: '#', desc: 'PCI-DSS compliance at scale' },
+        { name: 'For SOC Teams', href: '#', desc: '95% reduction in alert fatigue' },
+        { name: 'For GRC Teams', href: '#', desc: 'Automated compliance monitoring' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { name: 'Documentation', href: '#' },
-        { name: 'API Reference', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Webinars', href: '#' },
-        { name: 'Case Studies', href: '#' },
+        { name: 'Documentation', href: '#', desc: 'Complete platform guides' },
+        { name: 'API Reference', href: '#', desc: '162+ REST API endpoints' },
+        { name: 'Blog', href: '#', desc: 'Latest security insights' },
+        { name: 'Webinars', href: '#', desc: 'Live platform demos' },
+        { name: 'Case Studies', href: '#', desc: 'Customer success stories' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { name: 'About Us', href: '#' },
-        { name: 'Careers', href: '#' },
-        { name: 'Press', href: '#' },
-        { name: 'Contact', href: '#' },
-        { name: 'Partners', href: '#' },
+        { name: 'About Us', href: '#', desc: 'Our mission & values' },
+        { name: 'Careers', href: '#', desc: 'Join our team' },
+        { name: 'Press', href: '#', desc: 'Latest news & media' },
+        { name: 'Contact', href: '#', desc: 'Get in touch' },
+        { name: 'Partners', href: '#', desc: 'Partnership opportunities' },
       ],
     },
   ];
@@ -62,21 +62,54 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-slate-400 mb-6 leading-relaxed">
-              The unified cybersecurity operations platform. Connecting your entire security stack for complete visibility and accelerated response.
+              The unified cybersecurity operations platform. Consolidating 110+ security tools into one intelligent interface for complete visibility and accelerated response.
             </p>
-            <div className="flex space-x-4">
-              {['twitter', 'linkedin', 'github', 'youtube'].map((social) => (
-                <a
-                  key={social}
-                  href="#"
-                  className="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300"
-                >
-                  <span className="sr-only">{social}</span>
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z" />
-                  </svg>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-start space-x-3 text-slate-400">
+                <MapPin className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                <span className="text-sm">
+                  123 Security Boulevard, Suite 100<br/>
+                  San Francisco, CA 94105
+                </span>
+              </div>
+              <div className="flex items-center space-x-3 text-slate-400">
+                <Phone className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <span className="text-sm">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center space-x-3 text-slate-400">
+                <Mail className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <a href="mailto:sales@unifyty.io" className="text-sm hover:text-cyan-400 transition-colors">
+                  sales@unifyty.io
                 </a>
-              ))}
+              </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex space-x-4">
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a
+                href="mailto:sales@unifyty.io"
+                className="w-10 h-10 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 hover:border-cyan-500/50 flex items-center justify-center text-slate-400 hover:text-cyan-400 transition-all duration-300"
+              >
+                <Mail className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
@@ -89,9 +122,14 @@ const Footer = () => {
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-slate-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
+                      className="group block text-slate-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
                     >
-                      {link.name}
+                      <div className="font-medium">{link.name}</div>
+                      {link.desc && (
+                        <div className="text-xs text-slate-500 group-hover:text-slate-400 mt-0.5">
+                          {link.desc}
+                        </div>
+                      )}
                     </a>
                   </li>
                 ))}
@@ -100,10 +138,28 @@ const Footer = () => {
           ))}
         </div>
 
+        {/* Certifications Bar */}
+        <div className="border-t border-slate-800 pt-8 pb-8">
+          <div className="flex flex-wrap items-center justify-center gap-8">
+            <div className="flex items-center space-x-2">
+              <Shield className="w-5 h-5 text-cyan-400" />
+              <span className="text-slate-400 text-sm">SOC2 Type II Certified</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Shield className="w-5 h-5 text-blue-400" />
+              <span className="text-slate-400 text-sm">ISO 27001:2022 Compliant</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Shield className="w-5 h-5 text-purple-400" />
+              <span className="text-slate-400 text-sm">9.9/10 Security Rating</span>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-slate-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-6 text-sm text-slate-400">
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
               <a href="#" className="hover:text-cyan-400 transition-colors">
                 Privacy Policy
               </a>
@@ -112,6 +168,12 @@ const Footer = () => {
               </a>
               <a href="#" className="hover:text-cyan-400 transition-colors">
                 Security Policy
+              </a>
+              <a href="#" className="hover:text-cyan-400 transition-colors">
+                Cookie Policy
+              </a>
+              <a href="#" className="hover:text-cyan-400 transition-colors">
+                GDPR Compliance
               </a>
             </div>
             <div className="text-sm text-slate-400">
