@@ -67,11 +67,15 @@ const Header = () => {
             <Button
               variant="ghost"
               className="text-slate-300 hover:text-cyan-400 hover:bg-slate-800/50"
+              onClick={() => setIsSignInOpen(true)}
             >
               Sign In
             </Button>
-            <Button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105">
-              Start Free Trial
+            <Button 
+              className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white shadow-lg shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105"
+              onClick={() => setIsDemoOpen(true)}
+            >
+              Watch Demo
             </Button>
           </div>
 
