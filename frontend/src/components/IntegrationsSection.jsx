@@ -612,15 +612,23 @@ const IntegrationsSection = () => {
   ];
 
   const categories = [
-    { name: 'All', count: '30' },
+    { name: 'All', count: '67' },
     { name: 'VM', count: '4' },
-    { name: 'SIEM', count: '4' },
+    { name: 'SIEM', count: '6' },
     { name: 'EDR', count: '4' },
-    { name: 'Cloud', count: '4' },
+    { name: 'Cloud', count: '5' },
     { name: 'IAM', count: '4' },
     { name: 'PAM', count: '3' },
     { name: 'Network', count: '4' },
     { name: 'ITSM', count: '3' },
+    { name: 'ThreatIntel', count: '6' },
+    { name: 'AppSec', count: '5' },
+    { name: 'DLP', count: '3' },
+    { name: 'Email', count: '4' },
+    { name: 'Container', count: '3' },
+    { name: 'WAF', count: '3' },
+    { name: 'SOAR', count: '3' },
+    { name: 'Backup', count: '3' },
   ];
 
   const filteredIntegrations = selectedCategory === 'All' 
