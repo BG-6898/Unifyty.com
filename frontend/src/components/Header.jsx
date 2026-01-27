@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Shield } from 'lucide-react';
 import { Button } from './ui/button';
-import SignInForm from './SignInForm';
-import DemoModal from './DemoModal';
 
-const Header = () => {
+const Header = ({ onSignInClick, onDemoClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSignInOpen, setIsSignInOpen] = useState(false);
-  const [isDemoOpen, setIsDemoOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
