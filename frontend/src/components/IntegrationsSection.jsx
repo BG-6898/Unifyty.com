@@ -227,7 +227,7 @@ const IntegrationsSection = () => {
             <span className="text-cyan-400 font-semibold text-sm tracking-wider uppercase">Integrations</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            110+ Integrations.
+            104 Integrations.
             <span className="block bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent mt-2">
               One Interface.
             </span>
