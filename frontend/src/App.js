@@ -6,6 +6,7 @@ import HeroSection from "./components/HeroSection";
 import StatsSection from "./components/StatsSection";
 import FeaturesSection from "./components/FeaturesSection";
 import ModulesSection from "./components/ModulesSection";
+import AdvancedFeaturesSection from "./components/AdvancedFeaturesSection";
 import IntegrationsSection from "./components/IntegrationsSection";
 import PricingSection from "./components/PricingSection";
 import FAQSection from "./components/FAQSection";
@@ -33,6 +34,7 @@ const Home = () => {
         />
         <StatsSection />
         <FeaturesSection />
+        <AdvancedFeaturesSection />
         <ModulesSection />
         <IntegrationsSection />
         <PricingSection />
