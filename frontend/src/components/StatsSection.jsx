@@ -89,10 +89,13 @@ const StatsSection = () => {
     }, [isVisible, started]);
 
     const formatValue = () => {
+      // Format with commas for thousands
+      const formattedCount = count.toLocaleString();
+      
       if (end.includes('%')) return `${count}%`;
       if (end.includes('x')) return `${count}x`;
-      if (end.includes('+')) return `${count}+`;
-      return count;
+      if (end.includes('+')) return `${formattedCount}+`;
+      return formattedCount;
     };
 
     return <span>{formatValue()}</span>;
