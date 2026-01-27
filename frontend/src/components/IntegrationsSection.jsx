@@ -301,7 +301,7 @@ const IntegrationsSection = () => {
         <div className="text-center">
           <div className="inline-flex flex-col items-center space-y-4 p-8 rounded-2xl bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 backdrop-blur-sm">
             <p className="text-lg text-slate-300">
-              Showing <span className="text-cyan-400 font-bold">{filteredIntegrations.length}</span> of <span className="text-cyan-400 font-bold">110+</span> available integrations.
+              Showing <span className="text-cyan-400 font-bold">{filteredIntegrations.length}</span> of <span className="text-cyan-400 font-bold">104</span> enterprise integrations across 15 security categories.
             </p>
             <button className="text-cyan-400 hover:text-cyan-300 font-semibold transition-colors duration-300 underline underline-offset-4">
               View All Integrations →
