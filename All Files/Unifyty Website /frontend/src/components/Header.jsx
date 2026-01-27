@@ -107,11 +107,21 @@ const Header = () => {
               <Button
                 variant="outline"
                 className="w-full border-slate-700 text-slate-300 hover:bg-slate-800/50"
+                onClick={() => {
+                  setIsSignInOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 Sign In
               </Button>
-              <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white">
-                Start Free Trial
+              <Button 
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white"
+                onClick={() => {
+                  setIsDemoOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Watch Demo
               </Button>
             </div>
           </nav>
