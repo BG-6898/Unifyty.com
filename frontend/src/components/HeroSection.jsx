@@ -48,7 +48,7 @@ const HeroSection = ({ onWatchDemoClick, onRequestDemoClick }) => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <Button 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white text-lg px-8 py-6 shadow-2xl shadow-cyan-500/25 transition-all duration-300 hover:shadow-cyan-500/40 hover:scale-105 group"
-              onClick={onDemoClick}
+              onClick={onWatchDemoClick}
             >
               Watch Demo
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -56,7 +56,7 @@ const HeroSection = ({ onWatchDemoClick, onRequestDemoClick }) => {
             <Button
               variant="outline"
               className="border-2 border-slate-700 hover:border-cyan-500 text-white text-lg px-8 py-6 bg-slate-800/50 hover:bg-slate-800 backdrop-blur-sm transition-all duration-300 group"
-              onClick={onDemoClick}
+              onClick={onRequestDemoClick}
             >
               Request Demo
               <svg className="ml-2 w-5 h-5 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 20 20">
