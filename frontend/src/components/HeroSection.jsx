@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Shield, CheckCircle2, Award } from 'lucide-react';
 import { Button } from './ui/button';
 
-const HeroSection = ({ onDemoClick }) => {
+const HeroSection = ({ onWatchDemoClick, onRequestDemoClick }) => {
   const trustBadges = [
     { icon: Shield, label: 'SOC2 Type II Certified' },
     { icon: Award, label: 'ISO 27001:2022' },
