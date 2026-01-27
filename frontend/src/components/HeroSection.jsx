@@ -85,7 +85,7 @@ const HeroSection = ({ onWatchDemoClick, onRequestDemoClick }) => {
 
           {/* Social Proof */}
           <div className="pt-8 text-slate-400 text-sm animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-            Trusted by enterprise security teams worldwide • 110+ integrations • SOC2 & ISO27001 certified
+            Trusted by enterprise security teams worldwide • 104 integrations • SOC2 & ISO27001 certified
           </div>
         </div>
       </div>
