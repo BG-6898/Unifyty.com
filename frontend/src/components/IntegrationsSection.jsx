@@ -1,22 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Badge } from './ui/badge';
 
 const IntegrationsSection = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
   const integrations = [
+    // VM Tools
     { name: 'Tenable', category: 'VM', logo: 'https://img.icons8.com/color/48/cloud--v1.png' },
     { name: 'Qualys', category: 'VM', logo: 'https://img.icons8.com/color/48/server.png' },
     { name: 'Rapid7', category: 'VM', logo: 'https://img.icons8.com/color/48/security-checked.png' },
+    { name: 'Nessus', category: 'VM', logo: 'https://img.icons8.com/color/48/vulnerability.png' },
+    
+    // SIEM Tools
     { name: 'Splunk', category: 'SIEM', logo: 'https://img.icons8.com/color/48/search--v1.png' },
     { name: 'Microsoft Sentinel', category: 'SIEM', logo: 'https://img.icons8.com/color/48/microsoft.png' },
+    { name: 'Elastic SIEM', category: 'SIEM', logo: 'https://img.icons8.com/color/48/elasticsearch.png' },
+    { name: 'IBM QRadar', category: 'SIEM', logo: 'https://img.icons8.com/color/48/ibm.png' },
+    
+    // EDR Tools
     { name: 'CrowdStrike', category: 'EDR', logo: 'https://img.icons8.com/color/48/bird.png' },
     { name: 'SentinelOne', category: 'EDR', logo: 'https://img.icons8.com/color/48/security-shield-green.png' },
     { name: 'Carbon Black', category: 'EDR', logo: 'https://img.icons8.com/color/48/lock--v1.png' },
+    { name: 'Microsoft Defender', category: 'EDR', logo: 'https://img.icons8.com/color/48/windows-defender.png' },
+    
+    // Cloud Tools
     { name: 'AWS Security Hub', category: 'Cloud', logo: 'https://img.icons8.com/color/48/amazon-web-services.png' },
     { name: 'Azure Defender', category: 'Cloud', logo: 'https://img.icons8.com/color/48/azure-1.png' },
+    { name: 'GCP Security', category: 'Cloud', logo: 'https://img.icons8.com/color/48/google-cloud.png' },
+    { name: 'Wiz', category: 'Cloud', logo: 'https://img.icons8.com/color/48/cloud-security.png' },
+    
+    // IAM Tools
     { name: 'Okta', category: 'IAM', logo: 'https://img.icons8.com/color/48/key.png' },
-    { name: 'CyberArk', category: 'PAM', logo: 'https://img.icons8.com/color/48/password.png' },
+    { name: 'Azure AD', category: 'IAM', logo: 'https://img.icons8.com/color/48/azure-1.png' },
+    { name: 'SailPoint', category: 'IAM', logo: 'https://img.icons8.com/color/48/sailing-ship-medium.png' },
+    
+    // Network Tools
     { name: 'Palo Alto', category: 'Network', logo: 'https://img.icons8.com/color/48/firewall.png' },
     { name: 'Fortinet', category: 'Network', logo: 'https://img.icons8.com/color/48/fortress.png' },
+    { name: 'Cisco', category: 'Network', logo: 'https://img.icons8.com/color/48/cisco.png' },
+    
+    // ITSM Tools
     { name: 'ServiceNow', category: 'ITSM', logo: 'https://img.icons8.com/color/48/workflow.png' },
     { name: 'Jira', category: 'ITSM', logo: 'https://img.icons8.com/color/48/jira.png' },
   ];
@@ -31,6 +54,10 @@ const IntegrationsSection = () => {
     { name: 'Network', count: '14' },
     { name: 'ITSM', count: '6' },
   ];
+
+  const filteredIntegrations = selectedCategory === 'All' 
+    ? integrations 
+    : integrations.filter(int => int.category === selectedCategory);
 
   return (
     <section id="integrations" className="relative py-24 bg-slate-900">
@@ -56,20 +83,27 @@ const IntegrationsSection = () => {
           {categories.map((category) => (
             <Badge
               key={category.name}
-              className="px-6 py-3 text-sm font-medium bg-slate-800/50 hover:bg-slate-800 border-slate-700/50 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-400 cursor-pointer transition-all duration-300"
+              onClick={() => setSelectedCategory(category.name)}
+              className={`px-6 py-3 text-sm font-medium cursor-pointer transition-all duration-300 ${
+                selectedCategory === category.name
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white border-transparent shadow-lg shadow-cyan-500/25'
+                  : 'bg-slate-800/50 hover:bg-slate-800 border-slate-700/50 hover:border-cyan-500/50 text-slate-300 hover:text-cyan-400'
+              }`}
             >
               {category.name}
-              <span className="ml-2 text-cyan-400">{category.count}</span>
+              <span className={`ml-2 ${selectedCategory === category.name ? 'text-white' : 'text-cyan-400'}`}>
+                {category.count}
+              </span>
             </Badge>
           ))}
         </div>
 
         {/* Integration Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6 mb-12">
-          {integrations.map((integration, index) => (
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-12 min-h-[400px]">
+          {filteredIntegrations.map((integration, index) => (
             <div
               key={index}
-              className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:bg-slate-800 hover:border-cyan-500/30 transition-all duration-300 hover:transform hover:scale-110 cursor-pointer"
+              className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-xl p-6 hover:bg-slate-800 hover:border-cyan-500/30 transition-all duration-300 hover:transform hover:scale-110 cursor-pointer animate-fade-in"
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 rounded-xl transition-all duration-300"></div>
